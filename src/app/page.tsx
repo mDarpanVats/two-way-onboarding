@@ -1,82 +1,61 @@
-export default function Home() {
+import DashboardLayout from "./components/dashboard/DashboardLayout";
+import ProfileCard from "./components/dashboard/ProfileCard";
+import ProfitCustomerProjects from "./components/dashboard/ProfitCustomerProjects";
+import SocialMediaCards from "./components/dashboard/SocialMediaCards";
+import StatsCards from "./components/dashboard/StatsCards";
+import TrafficChart from "./components/dashboard/TrafficChart";
+import TrafficStats from "./components/dashboard/TrafficStats";
+import WorldMap from "./components/dashboard/WorldMap";
+
+const DashboardPage = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <nav className="bg-gray-800 p-4 text-white" id="navbar">
-        <div className="container mx-auto flex justify-between items-center">
-          <a href="#" className="text-lg font-bold">
-            My App
-          </a>
-          <ul className="flex space-x-4">
-            <li>
-              <a href="#" className="hover:text-gray-300" id="home-link">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300" id="about-link">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300" id="services-link">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300" id="contact-link">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <header
-        className="bg-blue-600 text-white py-16 text-center"
-        id="app-header"
-      >
-        <h1 className="text-4xl font-bold">Welcome to Our Awesome App!</h1>
-        <p className="mt-4 text-lg">Your journey to success starts here.</p>
-      </header>
-
-      <main className="flex-grow container mx-auto p-8">
-        <section className="mb-8" id="about-section">
-          <h2 className="text-2xl font-semibold mb-4">About Us</h2>
-          <p className="text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4" id="our-services">
-            Our Services
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-medium mb-2">Service One</h3>
-              <p className="text-gray-600">Description for service one.</p>
-            </div>
-            <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-medium mb-2">Service Two</h3>
-              <p className="text-gray-600">Description for service two.</p>
-            </div>
-            <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-medium mb-2">Service Three</h3>
-              <p className="text-gray-600">Description for service three.</p>
-            </div>
+    <DashboardLayout>
+      <div className="p-4">
+        <h1 className="text-2xl font-bold mb-4 text-gray-700">Dashboard</h1>
+        <div className="bg-indigo-200 border px-4 py-2 rounded mb-2">
+          <div
+            id="notifications"
+            className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+            role="alert"
+          >
+            <strong className="font-bold">Success!</strong>
+            <span className="block sm:inline">
+              {" "}
+              You successfully read this important alert message.
+            </span>
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+              <svg
+                className="fill-current h-6 w-6 text-green-500"
+                role="button"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <title>Close</title>
+                <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.15a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.029a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.15 2.758 3.15a1.2 1.2 0 0 1 0 1.697z" />
+              </svg>
+            </span>
           </div>
-        </section>
-      </main>
 
-      <footer
-        className="bg-gray-800 p-4 text-white text-center"
-        id="app-footer"
-      >
-        <p>&copy; {new Date().getFullYear()} My App. All rights reserved.</p>
-      </footer>
-    </div>
+          <StatsCards />
+
+          <SocialMediaCards />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2">
+            <TrafficChart />
+            <TrafficStats />
+          </div>
+
+          <div className="lg:col-span-1 space-y-4">
+            <ProfileCard />
+            <ProfitCustomerProjects />
+            <WorldMap />
+          </div>
+        </div>
+      </div>
+    </DashboardLayout>
   );
-}
+};
+
+export default DashboardPage;
